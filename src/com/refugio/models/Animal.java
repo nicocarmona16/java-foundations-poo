@@ -35,4 +35,7 @@ public abstract class Animal {
     public void setEstadoSalud(String estadoSalud) {
         this.estadoSalud = estadoSalud;
     }
+
+    public abstract void hacerSonido();
+
 }
