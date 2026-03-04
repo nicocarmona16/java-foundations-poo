@@ -12,6 +12,7 @@ public class Refugio {
     public void agregarAnimal(Animal animal) {
         listaAnimales.add(animal);
         System.out.println(animal.getNombre() + " fue agregado");
+        animal.hacerSonido();
     }
 
     public void filtrarAnimal(int edadFiltro) {
