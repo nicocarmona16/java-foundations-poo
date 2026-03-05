@@ -1,6 +1,8 @@
 package com.refugio.models;
 
-public abstract class Animal {
+import com.refugio.interfaces.Adoptable;
+
+public abstract class Animal implements Adoptable {
 
     private String nombre;
     private int edad;

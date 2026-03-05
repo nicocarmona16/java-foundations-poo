@@ -1,5 +1,6 @@
 package com.refugio;
 
+import com.refugio.exceptions.ExcepcionAnimalEnfermo;
 import com.refugio.models.Animal;
 import com.refugio.models.Gato;
 import com.refugio.models.Perro;
@@ -19,7 +20,7 @@ public class Main {
 
         while (isActive) {
             System.out.println("¿Que desea hacer?");
-            System.out.println("1. Agregar Animal - 2. Filtrar por Edad - 9. Salir");
+            System.out.println("1. Agregar Animal - 2. Filtrar por Edad - 3. Adoptar Animal - 9. Salir");
             int opc = scanner.nextInt();
 
             switch (opc) {
@@ -52,6 +53,31 @@ public class Main {
                     System.out.println("Por cual edad desea filtrar? ");
                     int edadFiltro = scanner.nextInt();
                     refugio.filtrarAnimal(edadFiltro);
+                    break;
+                case 3:
+                    scanner.nextLine();
+                    System.out.println("Nombre del animal que desea adoptar: ");
+                    String nombreAdopcion = scanner.nextLine();
+
+                    Animal animalEncontrado = null;
+
+                    for (Animal animal : refugio.getListaAnimales()) {
+                        if (animal.getNombre().equalsIgnoreCase(nombreAdopcion)) {
+                            animalEncontrado = animal;
+                            break;
+                        }
+                    }
+
+                    if (animalEncontrado != null) {
+                        try {
+                            refugio.simularAdopcion(animalEncontrado);
+                        } catch (ExcepcionAnimalEnfermo e) {
+                            System.out.println(e.getMessage());
+                        }
+                    } else {
+                        System.out.println("No se encontro un animal con ese nombre");
+                    }
+
                     break;
                 case 9:
                     System.out.println("Saliendo del sistema");

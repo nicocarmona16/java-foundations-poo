@@ -1,5 +1,6 @@
 package com.refugio.services;
 
+import com.refugio.exceptions.ExcepcionAnimalEnfermo;
 import com.refugio.models.Animal;
 
 import java.util.ArrayList;
@@ -8,6 +9,10 @@ import java.util.List;
 public class Refugio {
 
     private List<Animal> listaAnimales = new ArrayList<>();
+
+    public List<Animal> getListaAnimales() {
+        return listaAnimales;
+    }
 
     public void agregarAnimal(Animal animal) {
         listaAnimales.add(animal);
@@ -31,8 +36,13 @@ public class Refugio {
         }
     }
 
-    public void simularAdopcion() {
-
+    public void simularAdopcion(Animal animal) throws ExcepcionAnimalEnfermo {
+        if (animal.getEstadoSalud().equalsIgnoreCase("Sano")) {
+            animal.prepararParaAdopcion();
+            listaAnimales.remove(animal);
+        } else {
+            throw new ExcepcionAnimalEnfermo("No se puede adoptar a " + animal.getNombre() + ", su estado de salud es: " + animal.getEstadoSalud());
+        }
     }
 
 }

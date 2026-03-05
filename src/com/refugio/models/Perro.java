@@ -1,8 +1,6 @@
 package com.refugio.models;
 
-import com.refugio.interfaces.Adoptable;
-
-public class Perro extends Animal implements Adoptable {
+public class Perro extends Animal {
 
     public Perro(String nombre, int edad, String estadoSalud) {
         super(nombre, edad, estadoSalud);
@@ -15,7 +13,7 @@ public class Perro extends Animal implements Adoptable {
 
     @Override
     public void prepararParaAdopcion() {
-        System.out.println("Bañando al perro y poniendo collar");
+        System.out.println("Bañando al perro y poniendo collar  --- Listo para la adopcion");
     }
 
 }
