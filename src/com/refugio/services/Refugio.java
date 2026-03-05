@@ -10,10 +10,6 @@ public class Refugio {
 
     private List<Animal> listaAnimales = new ArrayList<>();
 
-    public List<Animal> getListaAnimales() {
-        return listaAnimales;
-    }
-
     public void agregarAnimal(Animal animal) {
         listaAnimales.add(animal);
         System.out.println(animal.getNombre() + " fue agregado");
@@ -43,6 +39,15 @@ public class Refugio {
         } else {
             throw new ExcepcionAnimalEnfermo("No se puede adoptar a " + animal.getNombre() + ", su estado de salud es: " + animal.getEstadoSalud());
         }
+    }
+
+    public Animal buscarAnimalPorNombre(String nombre) {
+        for (Animal animal : listaAnimales) {
+            if (animal.getNombre().equalsIgnoreCase(nombre)) {
+                return animal;
+            }
+        }
+        return null;
     }
 
 }

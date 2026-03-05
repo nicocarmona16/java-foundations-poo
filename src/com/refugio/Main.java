@@ -59,14 +59,7 @@ public class Main {
                     System.out.println("Nombre del animal que desea adoptar: ");
                     String nombreAdopcion = scanner.nextLine();
 
-                    Animal animalEncontrado = null;
-
-                    for (Animal animal : refugio.getListaAnimales()) {
-                        if (animal.getNombre().equalsIgnoreCase(nombreAdopcion)) {
-                            animalEncontrado = animal;
-                            break;
-                        }
-                    }
+                    Animal animalEncontrado = refugio.buscarAnimalPorNombre(nombreAdopcion);
 
                     if (animalEncontrado != null) {
                         try {
